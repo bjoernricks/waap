@@ -3,10 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-
-import 'daap.js';
 
 class App extends Component {
   render() {
@@ -17,24 +13,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <h2>Welcome to waap</h2>
           </div>
-          <div>
-            <TextField
-              defaultValue="127.0.0.1"
-              floatingLabelText="Server"/>
-          </div>
-          <div>
-            <TextField
-              defaultValue="3689"
-              floatingLabelText="Port"/>
-          <div>
-          </div>
-            <TextField
-              floatingLabelText="Password"
-              type="password"/>
-          </div>
-          <div>
-            <RaisedButton label="Login" primary={true}/>
-          </div>
+          {this.props.children}
         </div>
       </MuiThemeProvider>
     );
