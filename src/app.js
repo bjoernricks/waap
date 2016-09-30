@@ -7,10 +7,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import {Daap} from 'daap.js';
 
+export const daap = new Daap();
+
 class App extends Component {
 
   getChildContext() {
-    return {daap: new Daap()};
+    return {daap};
   }
 
   render() {
