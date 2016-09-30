@@ -3,34 +3,82 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import 'daap.js';
-
 class Login extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      port: '3689',
+      server: '127.0.0.1',
+      password: '',
+    }
+
+    this.handleLogin = this.handleLogin.bind(this);
+    this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.onPortChange = this.onPortChange.bind(this);
+    this.onServerChange = this.onServerChange.bind(this);
+  }
+
+  handleLogin(event) {
+    let {daap, router} = this.context;
+    let {server, port, password} = this.state;
+
+    daap.setServer(server, port);
+    daap.setPassword(password);
+    daap.login().then(() => {
+        router.replace('/');
+    });
+  }
+
+  onServerChange(event) {
+    this.setState({server: event.target.value});
+  }
+
+  onPortChange(event) {
+    this.setState({port: event.target.value});
+  }
+
+  onPasswordChange(event) {
+    this.setState({password: event.target.value});
+  }
+
   render() {
+    let {server, port, password} = this.state;
     return (
      <main>
         <div>
           <TextField
-            defaultValue="127.0.0.1"
+            value={server}
+            onChange={this.onServerChange}
             floatingLabelText="Server"/>
         </div>
         <div>
           <TextField
-            defaultValue="3689"
+            value={port}
+            onChange={this.onPortChange}
             floatingLabelText="Port"/>
         <div>
         </div>
           <TextField
+            value={password}
             floatingLabelText="Password"
+            onChange={this.onPasswordChange}
             type="password"/>
         </div>
         <div>
-          <RaisedButton label="Login" primary={true}/>
+          <RaisedButton label="Login" primary={true}
+            onClick={this.handleLogin}/>
         </div>
       </main>
     );
   }
 }
+
+Login.contextTypes = {
+  router: React.PropTypes.object.isRequired,
+  daap: React.PropTypes.object.isRequired,
+};
 
 export default Login;
 
