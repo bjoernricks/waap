@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+
 import logo from './logo.svg';
-import './App.css';
+import './app.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import {Daap} from 'daap.js';
+
 class App extends Component {
+
+  getChildContext() {
+    return {daap: new Daap()};
+  }
+
   render() {
     return (
       <MuiThemeProvider>
@@ -19,6 +27,10 @@ class App extends Component {
     );
   }
 }
+
+App.childContextTypes = {
+  daap: React.PropTypes.object,
+};
 
 export default App;
 
