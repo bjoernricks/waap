@@ -31,8 +31,26 @@ app.use(proxy(options.forward, {
       console.log('poxy', orig_req.method, 'request to', orig_req.url);
     }
     return proxy_req;
-  }
+  },
+  filter: function(req, res) {
+    return req.method === 'GET' || req.method === 'POST';
+  },
 }));
+
+app.options('*', function (req, res) {
+  res.set('Access-Control-Allow-Origin', options.allow);
+  res.set('Access-Control-Allow-Credentials', 'true');
+  res.set('Access-Control-Allow-Methods', 'GET, POST, PUT');
+  res.set('Access-Control-Allow-Headers',
+    req.get('Access-Control-Request-Headers'));
+
+  if (options.verbose) {
+    console.log('Creating response to preflight request');
+  }
+  res.send();
+})
+
+console.log('Starting proxy on 127.0.0.1:' + options.port);
 
 app.listen(options.port, '127.0.0.1');
 
