@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "commander": "^2.9.0",
+    "express": "^4.14.0",
+    "express-http-proxy": "^0.10.0",
     "react-scripts": "0.6.0"
   },
   "dependencies": {
