@@ -4,8 +4,8 @@ const options = require('commander');
 
 options
   .version('1.0')
-  .option('-p, --port <port>', 'Port to listen to (default: 8080)', Number,
-    8080)
+  .option('-p, --port <port>', 'Port to listen to (default: 3689)', Number,
+    3689)
   .option('-f, --forward <address>', 'Address to forward requests to')
   .option('-a, --allow <client url>', 'Client url to allow CORS request from',
     '*')
