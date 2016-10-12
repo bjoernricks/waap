@@ -24,10 +24,15 @@ class Login extends React.Component {
     let {daap, router} = this.context;
     let {server, port, password} = this.state;
 
+    this.setState({error: undefined});
+
     daap.setServer(server, port);
     daap.setPassword(password);
     daap.login().then(() => {
         router.replace('/');
+    }).catch(error => {
+      console.log(error);
+      this.setState({error: '' + error});
     });
   }
 
@@ -36,6 +41,7 @@ class Login extends React.Component {
   }
 
   onPortChange(event) {
+    console.log('setting port', event.target.value);
     this.setState({port: event.target.value});
   }
 
@@ -44,9 +50,14 @@ class Login extends React.Component {
   }
 
   render() {
-    let {server, port, password} = this.state;
+    let {server, port, password, error} = this.state;
     return (
      <main>
+        {error &&
+          <div>
+            An error occured {error}
+          </div>
+        }
         <div>
           <TextField
             value={server}
