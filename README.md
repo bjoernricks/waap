@@ -7,7 +7,7 @@ web browser.
 
  * [Getting Started](#getting-started)
  * [Note on iTunes](#note-on-itunes)
- * [Note on CORS](#note-on-cors)
+ * [Note on CORS](#note-on-cors-and-running-a-proxy)
 
 ## tl;dr
 
