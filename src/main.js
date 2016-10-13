@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SongList from './songlist.js';
+import Player from './player.js';
 
 class Main extends React.Component {
 
@@ -17,6 +18,10 @@ class Main extends React.Component {
     this.loadSongs();
   }
 
+  playSong(song) {
+    this.player.playSong(song);
+  }
+
   loadSongs() {
     let {daap} = this.context;
     daap.items({max: 50}).then(songs => {
@@ -24,20 +29,15 @@ class Main extends React.Component {
     });
   }
 
-  playSong(song) {
-    console.log('Start to playing song');
-    this.audio.setAttribute('type', 'audio/' + song.format);
-    this.audio.setAttribute('src', song.stream_url);
-  }
-
   render() {
     let {songs} = this.state;
     return (
-        <div>
-          <audio ref={ref => this.audio = ref}
-            controls>Your browser doesn't support audio </audio>
-          <SongList songs={songs}/>
-        </div>
+      <div>
+        {songs.length > 0 &&
+          <Player ref={ref => this.player = ref}/>
+        }
+        <SongList songs={songs} onClick={this.playSong}/>
+      </div>
     );
   }
 };
