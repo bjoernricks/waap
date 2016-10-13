@@ -24,7 +24,7 @@ class Main extends React.Component {
 
   loadSongs() {
     let {daap} = this.context;
-    daap.items({max: 50}).then(songs => {
+    daap.items({max: 50, sort: 'artist'}).then(songs => {
       this.setState({songs});
     });
   }
