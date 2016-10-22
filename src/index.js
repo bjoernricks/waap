@@ -4,9 +4,9 @@ import {Router, Route, browserHistory} from 'react-router';
 
 import {Daap} from 'daap.js';
 
-import App, {daap} from './app';
-import Login from './login';
-import Main from './main';
+import App, {daap} from './app.js';
+import Login from './login.js';
+import Main from './main.js';
 
 import './index.css';
 

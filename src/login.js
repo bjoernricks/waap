@@ -3,7 +3,11 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class Login extends React.Component {
+import Header from './header.js';
+
+import logo from './logo.svg';
+
+export class Login extends React.Component {
 
   constructor(props) {
     super(props);
@@ -53,36 +57,42 @@ class Login extends React.Component {
   render() {
     let {server, port, password, error} = this.state;
     return (
-     <main>
-        {error &&
+      <div>
+        <Header>
+          <img src={logo} className="logo" alt="logo" />
+          <h2>Welcome to waap</h2>
+        </Header>
+        <main>
+          {error &&
+            <div>
+              An error occured {error}
+            </div>
+          }
           <div>
-            An error occured {error}
+            <TextField
+              value={server}
+              onChange={this.onServerChange}
+              floatingLabelText="Server"/>
           </div>
-        }
-        <div>
-          <TextField
-            value={server}
-            onChange={this.onServerChange}
-            floatingLabelText="Server"/>
-        </div>
-        <div>
-          <TextField
-            value={port}
-            onChange={this.onPortChange}
-            floatingLabelText="Port"/>
-        <div>
-        </div>
-          <TextField
-            value={password}
-            floatingLabelText="Password"
-            onChange={this.onPasswordChange}
-            type="password"/>
-        </div>
-        <div>
-          <RaisedButton label="Login" primary={true}
-            onClick={this.handleLogin}/>
-        </div>
-      </main>
+          <div>
+            <TextField
+              value={port}
+              onChange={this.onPortChange}
+              floatingLabelText="Port"/>
+            <div>
+            </div>
+            <TextField
+              value={password}
+              floatingLabelText="Password"
+              onChange={this.onPasswordChange}
+              type="password"/>
+          </div>
+          <div>
+            <RaisedButton label="Login" primary={true}
+              onClick={this.handleLogin}/>
+          </div>
+        </main>
+      </div>
     );
   }
 }

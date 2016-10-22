@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 
-import logo from './logo.svg';
-import './app.css';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import {Daap} from 'daap.js';
 
+import './app.css';
+
 export const daap = new Daap();
 
-class App extends Component {
+export class App extends Component {
 
   getChildContext() {
     return {daap};
@@ -18,11 +17,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div className="App">
-          <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h2>Welcome to waap</h2>
-          </div>
+        <div className="app">
           {this.props.children}
         </div>
       </MuiThemeProvider>

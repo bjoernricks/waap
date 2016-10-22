@@ -5,6 +5,7 @@ import SongList from './songlist.js';
 import Player from './player.js';
 import Spinner from './spinner.js';
 
+import Header from './header.js';
 
 class Main extends React.Component {
 
@@ -42,9 +43,11 @@ class Main extends React.Component {
     let {songs, loading} = this.state;
     return (
       <div>
-        {songs.length > 0 &&
-          <Player ref={ref => this.player = ref}/>
-        }
+        <Header>
+          {songs.length > 0 &&
+            <Player ref={ref => this.player = ref}/>
+          }
+        </Header>
         {loading &&
           <Spinner/>
         }
