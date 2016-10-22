@@ -11,7 +11,7 @@ export class Player extends React.Component {
   playSong(song) {
     console.log('Start to playing song');
     this.audio.setAttribute('type', 'audio/' + song.format);
-    this.audio.setAttribute('src', song.stream_url);
+    this.audio.setAttribute('src', song.streamUrl);
     this.audio.play();
   }
 
