@@ -1,0 +1,15 @@
+.player {
+  position: relative;
+}
+
+.player .progress-wrapper {
+  height: 15px;
+  padding: 5px 0;
+  width: 100%
+}
+
+.player .progress {
+  height: 5px;
+  width: 0;
+  background-color: white;
+}
