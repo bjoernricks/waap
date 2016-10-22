@@ -30,7 +30,8 @@ class Login extends React.Component {
     daap.setPassword(password);
     daap.login().then(() => {
         router.replace('/');
-    }).catch(error => {
+    })
+    .catch(error => {
       console.log(error);
       this.setState({error: '' + error});
     });
