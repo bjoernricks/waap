@@ -8,7 +8,7 @@ import SkipPrevious from 'material-ui/svg-icons/av/skip-previous';
 
 import 'howler';
 
-import {log, is_defined} from './utils.js';
+import {log, is_defined, has_value} from './utils.js';
 
 import Layout from './layout.js';
 import Spinner from './spinner.js';
@@ -125,8 +125,7 @@ export class Player extends React.Component {
     // Get the Howl we want to manipulate.
     let {howl} = this.state;
 
-    if (is_defined(howl) && is_defined(this.timer) &&
-      is_defined(this.progress)) {
+    if (is_defined(howl) && has_value(this.timer) && has_value(this.progress)) {
       // Determine our current seek position.
       let seek = howl.seek() || 0;
       this.timer.innerHTML = format_time(Math.round(seek));
