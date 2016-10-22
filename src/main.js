@@ -1,12 +1,10 @@
 import React from 'react';
 
-import Spinner from 'react-spinner';
-
 import {log} from './utils.js';
 import SongList from './songlist.js';
 import Player from './player.js';
+import Spinner from './spinner.js';
 
-import './spinner.css';
 
 class Main extends React.Component {
 
@@ -48,9 +46,7 @@ class Main extends React.Component {
           <Player ref={ref => this.player = ref}/>
         }
         {loading &&
-          <div className="spinner">
-            <Spinner/>
-          </div>
+          <Spinner/>
         }
         {songs.length > 0 &&
           <SongList songs={songs} onClick={this.playSong}/>
