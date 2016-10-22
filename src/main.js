@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {log} from './utils.js';
 import SongList from './songlist.js';
 import Player from './player.js';
 
@@ -24,8 +25,10 @@ class Main extends React.Component {
 
   loadSongs() {
     let {daap} = this.context;
-    daap.items({max: 50, sort: 'artist'}).then(songs => {
-      this.setState({songs});
+
+    daap.items({sort: 'artist'}).then(items => {
+      log.debug('Loaded ' + items.length + ' songs');
+      this.setState({songs: items.get()});
     });
   }
 
