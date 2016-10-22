@@ -1,8 +1,12 @@
 import React from 'react';
 
+import Spinner from 'react-spinner';
+
 import {log} from './utils.js';
 import SongList from './songlist.js';
 import Player from './player.js';
+
+import './spinner.css';
 
 class Main extends React.Component {
 
@@ -11,11 +15,15 @@ class Main extends React.Component {
 
     this.state = {
       songs: [],
+      loading: true,
     };
 
     this.playSong = this.playSong.bind(this);
   }
+
   componentDidMount() {
+    this.setState({loading: true});
+
     this.loadSongs();
   }
 
@@ -28,18 +36,25 @@ class Main extends React.Component {
 
     daap.items({sort: 'artist'}).then(items => {
       log.debug('Loaded ' + items.length + ' songs');
-      this.setState({songs: items.get()});
+      this.setState({songs: items.get(), loading: false});
     });
   }
 
   render() {
-    let {songs} = this.state;
+    let {songs, loading} = this.state;
     return (
       <div>
         {songs.length > 0 &&
           <Player ref={ref => this.player = ref}/>
         }
-        <SongList songs={songs} onClick={this.playSong}/>
+        {loading &&
+          <div className="spinner">
+            <Spinner/>
+          </div>
+        }
+        {songs.length > 0 &&
+          <SongList songs={songs} onClick={this.playSong}/>
+        }
       </div>
     );
   }
