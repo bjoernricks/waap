@@ -51,8 +51,9 @@ export class SongItem extends React.Component {
         onClick={this.handleClick}
         secondaryText={
           <p>
-            <span style={{color: darkBlack}}>{song.artist}</span> -
-            {song.album}
+            <span style={{color: darkBlack}}>{song.artist}</span>
+            <span> - </span>
+            <span>{song.album}</span>
           </p>
         }
         secondaryTextLines={2} />
