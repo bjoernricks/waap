@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import Header from './header.js';
+import Layout from './layout.js';
 
 import logo from './logo.svg';
 
@@ -59,39 +60,43 @@ export class Login extends React.Component {
     return (
       <div>
         <Header>
-          <img src={logo} className="logo" alt="logo" />
-          <h2>Welcome to waap</h2>
+          <Layout flex="column" align={['center', 'center']}>
+            <img src={logo} className="logo" alt="logo" />
+            <h2>Welcome to waap</h2>
+          </Layout>
         </Header>
-        <main>
-          {error &&
+        <Layout align="center" flex>
+          <main>
+            {error &&
+              <div>
+                An error occured {error}
+              </div>
+            }
             <div>
-              An error occured {error}
+              <TextField
+                value={server}
+                onChange={this.onServerChange}
+                floatingLabelText="Server"/>
             </div>
-          }
-          <div>
-            <TextField
-              value={server}
-              onChange={this.onServerChange}
-              floatingLabelText="Server"/>
-          </div>
-          <div>
-            <TextField
-              value={port}
-              onChange={this.onPortChange}
-              floatingLabelText="Port"/>
             <div>
+              <TextField
+                value={port}
+                onChange={this.onPortChange}
+                floatingLabelText="Port"/>
+              <div>
+              </div>
+              <TextField
+                value={password}
+                floatingLabelText="Password"
+                onChange={this.onPasswordChange}
+                type="password"/>
             </div>
-            <TextField
-              value={password}
-              floatingLabelText="Password"
-              onChange={this.onPasswordChange}
-              type="password"/>
-          </div>
-          <div>
-            <RaisedButton label="Login" primary={true}
-              onClick={this.handleLogin}/>
-          </div>
-        </main>
+            <Layout flex align="center">
+              <RaisedButton label="Login" primary={true}
+                onClick={this.handleLogin}/>
+            </Layout>
+          </main>
+        </Layout>
       </div>
     );
   }
