@@ -11,7 +11,7 @@
   "dependencies": {
     "daap.js": "^2.0.0-alpha1",
     "howler": "^2.0.1",
-    "material-ui": "^0.15.4",
+    "material-ui": "^0.16.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-router": "^2.8.1",
