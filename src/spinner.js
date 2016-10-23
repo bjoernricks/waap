@@ -2,8 +2,6 @@ import React from 'react';
 
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
-import {classes} from './utils.js';
-
 import './spinner.css';
 
 const style = {
