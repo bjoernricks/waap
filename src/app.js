@@ -5,8 +5,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import {Daap} from 'daap.js';
 
-import './app.css';
-
 injectTapEventPlugin();
 
 export const daap = new Daap();
