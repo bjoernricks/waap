@@ -5,6 +5,8 @@ import Subheader from 'material-ui/Subheader';
 
 import {darkBlack} from 'material-ui/styles/colors';
 
+import Layout from './layout.js';
+
 import './songlist.css';
 
 export class SongList extends React.Component {
@@ -18,10 +20,12 @@ export class SongList extends React.Component {
       );
     })
     return (
-      <List className="songlist">
-        <Subheader>Songs</Subheader>
-        {songitems}
-      </List>
+      <Layout flex align="center">
+        <List className="songlist">
+          <Subheader inset={true}>Songs</Subheader>
+          {songitems}
+        </List>
+      </Layout>
     );
   }
 }
@@ -43,7 +47,7 @@ export class SongItem extends React.Component {
   render() {
     let {song} = this.props;
     return (
-      <ListItem primaryText={song.name}
+      <ListItem className="songitem" primaryText={song.name}
         onClick={this.handleClick}
         secondaryText={
           <p>

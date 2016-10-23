@@ -1,9 +1,8 @@
 .songlist {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 400px;
 }
 
 .songitem {
-  width: 400px;
+  width: 100%;
+  text-align: center;
 }
