@@ -77,8 +77,11 @@ class Main extends React.Component {
         </Layout>
 
         {loading &&
-          <Spinner/>
+          <Layout flex align="center">
+            <Spinner/>
+          </Layout>
         }
+
         {songs.length > 0 &&
           <SongList songs={songs} onClick={this.playSong}/>
         }
