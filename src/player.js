@@ -68,7 +68,6 @@ export class Player extends React.Component {
     let howl = new window.Howl({
       src: [song.streamUrl],
       html5: true,
-      onload: () => this.setState({state: 'playing'}),
       onplay: () => {
         this.setState({state: 'playing'})
         requestAnimationFrame(this.step);
