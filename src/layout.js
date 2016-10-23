@@ -33,7 +33,10 @@ export const Layout = props => {
 Layout.propTypes = {
   className: React.PropTypes.string,
   flex: React.PropTypes.oneOf(['row', 'column', true]),
-  align: React.PropTypes.string,
+  align: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.array,
+  ]),
 };
 
 export default Layout;
