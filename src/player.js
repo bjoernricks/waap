@@ -156,46 +156,49 @@ export class Player extends React.Component {
 
         {/* <div id="waveform"></div> */}
         {/* <div id="bar"></div> */}
+
         {(state === 'pause' || state === 'stopped' || state === 'playing') &&
           <div className="progress-wrapper" onClick={this.seek}>
             <div className="progress" ref={ref => this.progress = ref}></div>
           </div>
         }
 
-        {state === 'loading' &&
-          <Spinner color="white"/>
-        }
+        <Layout flex align="center">
+          {state === 'loading' &&
+            <Spinner color="white"/>
+          }
 
-        <div className="controlsOuter">
-          <div className="controlsInner">
-            {(state === 'pause' || state === 'stopped') &&
-              <IconButton onClick={this.play}
-                iconStyle={style.mediumIcon}
-                style={style.medium}>
-                <PlayArrow color="white"/>
-              </IconButton>
-            }
-            {state === 'playing' &&
-              <IconButton onClick={this.pause}
-                iconStyle={style.mediumIcon}
-                style={style.medium}>
-                <Pause color="white"/>
-              </IconButton>
-            }
-            {has_previous &&
-              <IconButton onClick={this.previous}>
-                <SkipPrevious color="white"/>
-              </IconButton>
-            }
-            {has_next &&
-              <IconButton onClick={this.next}>
-                <SkipNext color="white"/>
-              </IconButton>
-            }
+          <div className="controlsOuter">
+            <div className="controlsInner">
+              {(state === 'pause' || state === 'stopped') &&
+                <IconButton onClick={this.play}
+                  iconStyle={style.mediumIcon}
+                  style={style.medium}>
+                  <PlayArrow color="white"/>
+                </IconButton>
+              }
+              {state === 'playing' &&
+                <IconButton onClick={this.pause}
+                  iconStyle={style.mediumIcon}
+                  style={style.medium}>
+                  <Pause color="white"/>
+                </IconButton>
+              }
+              {has_previous &&
+                <IconButton onClick={this.previous}>
+                  <SkipPrevious color="white"/>
+                </IconButton>
+              }
+              {has_next &&
+                <IconButton onClick={this.next}>
+                  <SkipNext color="white"/>
+                </IconButton>
+              }
+            </div>
+            <div className="btn" id="playlistBtn"></div>
+            <div className="btn" id="volumeBtn"></div>
           </div>
-          <div className="btn" id="playlistBtn"></div>
-          <div className="btn" id="volumeBtn"></div>
-        </div>
+        </Layout>
 
         {/* <div id="volume" className="fadeout"> */}
         {/*   <div id="barFull" className="bar"></div> */}
