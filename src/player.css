@@ -14,7 +14,8 @@
 .player .progress-wrapper {
   height: 15px;
   padding: 5px 0;
-  width: 100%
+  width: 100%;
+  cursor: pointer;
 }
 
 .player .progress {
